@@ -1,0 +1,8 @@
+//Name: Mary-Rose Tracy 1001852753
+/* Donna French 1000074079 */
+// you said you do not need to do names of titles of songs, but I kindof wanted to do that so here we go
+char *PhraseBank[] = {"Nobody Praying For Me","Keep It Simple", "This Is What Makes Us Girls",
+                 "Find an Island", "Burn The House Down", "Get To Know Ya",
+				 "My Songs Know What You Did In The Dark", "Up In the Air",
+				 "Born For This", "Boy in the Bubble", ""};
+
