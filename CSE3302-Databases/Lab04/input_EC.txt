@@ -1,0 +1,7 @@
+if(ACertainThing) {   int i=6; }
+System.out.println("Testing Testing for branching \\"Brace yourselves for this one\\": {}");
+//From the HW assignment, just to be sure
+if (condition){   int a = 1; }
+System.out.println("Testing Testing for branching \\"Brace yourselves for this one\\": {}");
+//From the HW assignment, just to be sure. didn't do ; with this one but still the same
+System.out.println("\"")
