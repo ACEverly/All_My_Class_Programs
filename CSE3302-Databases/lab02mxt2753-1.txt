@@ -1,0 +1,106 @@
+/*
+Name: Mary-Rose Tracy
+ID#:1001852753
+Date: 9/27/2023
+Project: Lab2
+In languages of: Javascript
+*/
+
+/*
+    1."(5 points) Start with an array called inputtable. The array should have numbers between 1 & 10."
+*/  
+const Inputtable=Array.from( {length:10},(_,i)=>i+1 );
+console.log(Inputtable);
+/*
+    "(30 points) Use inputtable from step 1 to create the following: 
+        A.Set of multiples of 5 between 1 and 51. Name it fiveTable, print the contents to the console
+        B.Set of multiples of 13 between 1 and 131. Name it thirteenTable, print the contents to the console
+        C.Set of squares of the numbers in inputtable. Name it squaresTable, print the contents to the console"
+        Note: I'm gonna call them 
+        TOF=Table of Five
+        TOTH=Table of Thirteen
+        SSquare=Set Square
+*/
+//A
+const TOF=Inputtable.map( Num=>Num*5 ).filter( Num=>Num<=51 );
+console.log( TOF );
+//B
+const TOTH=Inputtable.map( Num=>Num*13 ).filter( Num=>Num<=131 );
+console.log( TOTH );
+//C
+const SSquare=Inputtable.map( Num=>Num*Num );
+console.log( SSquare );
+/*
+    3."(10 points) Get (and then print) the odd multiples of 5 between 1 and 100. 5, 15, ...""
+    MultOFiveOdd
+*/
+const MultOFiveOdd=Array.from( {length:100},(_,i)=>i+1 ).filter( Num=>Num%5===0&&Num%2!==0 );
+console.log( MultOFiveOdd );
+/*
+    4."(20 points) Get (and then print) the sum of even multiples of 7 between 1 and 100. Example: find the multiples and then sum them: 14 + 28+...'
+    MMultOSeven
+*/
+const MultOSeven=Array.from( {length:100},(_,i)=>i+1 ).filter( Num=>Num%7===0&&Num%2===0 ).reduce( (Acum,Curry)=>Acum+Curry,0 );
+console.log( MultOSeven );
+/*
+    "5. (15 points) Use currying to rewrite the function below:
+        function cylinder_volume(r, h)
+        { 
+            var volume = 3.14 * r * r * h; 
+            return volume; 
+        } 
+    A.Use r = 5 and h = 10 to call your curried function.
+    B.Reuse the function from part ‘a’ but use h = 17
+    C.Reuse the function from part ‘a’ but use h = 11 - 
+    cylinder_volume= CylVol just to debug it
+*/ 
+const CylVol=r=>h=>3.14*r*r*h; //I'm gonna do something a little different Instread of doingthe function of 5. we are gonna intialize by saying 
+// => => then doing the *ing like so^
+//A:
+console.log( CylVol(5)(10) );
+//B:
+console.log( CylVol(5)(17) );
+//C:
+console.log( CylVol(5)(11) );
+/*
+    "6.(15 points) Use the following code (insert it into your code) to take advantage of closures to wrap content with
+    HTML tags, specifically show an HTML table consisting of a table row that has at least
+    one table cell/element. You can use the console to output your results.""
+*/
+const CreateTheHTMLTag=function( beginTag, endTag )
+{ 
+    return function(textcontent)
+    { 
+        return beginTag+textcontent+endTag; 
+    } 
+}
+
+const TableW=CreateTheHTMLTag( '<table>\n','</table>' );
+const TrEquals=CreateTheHTMLTag( '<tr>\n','</tr>\n' );
+const ThEquals=CreateTheHTMLTag( '<th>','<th>\n' );
+const TdEquals=CreateTheHTMLTag('<td>','</td>\n' );
+//Let's gwet into the headers
+const HeaderTable=TrEquals( ThEquals('Name') + ThEquals('What Popular Band') );
+//let's do the tds
+const ROne=TrEquals( TdEquals('Adam Levine') + TdEquals('Maroon 5') );
+const RTwo=TrEquals( TdEquals('Linkin Park') + TdEquals('Chester Bennington') );
+//Now Finally combinbing all of this
+const TableOHTML=TableW( HeaderTable+ROne+RTwo );
+console.log( TableOHTML );
+
+/*
+    7. (10 points) Do the ‘generic’ version of questions 3 and 4, meaning the target
+    multiple must not be hard coded; hint: we studied closures and currying. This means you
+    should be able to use the same code to handle multiple scenarios, for example: first odd
+    multiples of 11 and then even multiples of 3 (still in the range 1 to 100). Your code
+    should allow the grader to combine a chosen multiple along with the choice of odd / even
+    without writing any code. 
+*/ 
+const MultOfRange=( MultOTrgt, TheRange, OddOEven )=>
+{
+    return Array.from( {length:TheRange},(_,i)=>i+1).filter(Num=>Num%MultOTrgt===0&&(OddOEven==='even'?Num%2===0:Num%2!==0) );
+}
+//So we can get the odd multiples that equal 11
+console.log( MultOfRange( 11,100,'odd' ) ); 
+//we need to get the 3 that are the multiples of it
+console.log( MultOfRange( 3,100,'even' ).reduce(( Acum,Curry )=>Acum+Curry,0) ); 
